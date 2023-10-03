@@ -16,7 +16,7 @@ class CParser(Parser):
     @_('statement ";" statements')
     def statements(self,p):
         pass
-    @_('statement')
+    @_('statement ";"')
     def statements(self,p):
         pass
     @_('declaration_stmt')
