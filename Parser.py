@@ -37,10 +37,10 @@ class CParser(Parser):
     @_('identifier')
     def list_of_variables(self,p):
         pass
-    @_('identifier "=" identifier')
+    @_('identifier "=" identifier ";"')
     def assignment_stmt(self,p):
         pass
-    @_('identifier "=" NUMBER')
+    @_('identifier "=" NUMBER ";" ')
     def assignment_stmt(self,p):
         pass
     @_('PRINT identifier ";" ')
