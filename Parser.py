@@ -2,15 +2,15 @@ from sly import Parser
 from Lexer import CLexer
 
 class CParser(Parser):
-    tokens=CLexer.tokens()
-    literals=CLexer.literals()
+    tokens=CLexer.tokens
+    literals=CLexer.literals
     @_('main_func')
     def program(self,p):
         return true
     @_('return_type identifier "(" ")" "{" statements "}"')
     def main_func(self,p):
         pass
-    @_('int')
+    @_('INT')
     def return_type(self,p):
         return p.int
     @_('statement ";" statements')
@@ -43,7 +43,7 @@ class CParser(Parser):
     @_('identifier "=" NUMBER')
     def assignment_stmt(self,p):
         pass
-    @_('print identifier ";" ')
+    @_('PRINT identifier ";" ')
     def print_stmt(self,p):
         pass
     @_('INT')
@@ -55,16 +55,16 @@ class CParser(Parser):
     @_('NUMBER')
     def constant(self,p):
         return p[0]
+if __name__=='__main__':
+    lexer=CLexer()
+    parser=CParser()
     code='''int main(){
         int a;
         a=30;
         print a;
     }'''
-if __name__=='__main__':
-    lexer=CLexer()
-    parser=CParser()
     res=parser.parse(lexer.tokenize(code))
-    if parser.valid:
+    if res:
         print("valid")
     else:
         print("invalid")
