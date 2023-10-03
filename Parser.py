@@ -4,7 +4,7 @@ class CParser(Parser):
     @_('main_func')
     def program(self,p):
         return true
-    @_('return_type identifier "(" ")" "{" statements')
+    @_('return_type identifier "(" ")" "{" statements "}"')
     def main_func(self,p):
         pass
     @_('int')
@@ -40,7 +40,7 @@ class CParser(Parser):
     @_('identifier "=" NUMBER')
     def assignment_stmt(self,p):
         pass
-    @_('print identifier')
+    @_('print identifier ";" ')
     def print_stmt(self,p):
         pass
     @_('INT')
