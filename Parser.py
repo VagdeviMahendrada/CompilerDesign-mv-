@@ -1,9 +1,9 @@
 from sly import Parser
-import CLexer from Lexer
+from Lexer import CLexer
 class CParser(Parser):
     @_('main_func')
     def program(self,p):
-        pass
+        return true
     @_('return_type identifier "(" ")" "{" statements')
     def main_func(self,p):
         pass
@@ -52,3 +52,15 @@ class CParser(Parser):
     @_('NUMBER')
     def constant(self,p):
         return p[0]
+    code='''int main(){
+        int a;
+        a=30;
+        print a;
+    }'''
+lexer=CLexer()
+parser=CParser()
+res=parser.parse(lexer.tokenize(code))
+if res:
+    print("code accepted")
+else:
+    print("invalid code")
