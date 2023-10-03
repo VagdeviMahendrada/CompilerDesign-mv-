@@ -57,10 +57,11 @@ class CParser(Parser):
         a=30;
         print a;
     }'''
-lexer=CLexer()
-parser=CParser()
-res=parser.parse(lexer.tokenize(code))
-if res:
-    print("code accepted")
-else:
-    print("invalid code")
+if __name__=='__main__':
+    lexer=CLexer()
+    parser=CParser()
+    res=parser.parse(lexer.tokenize(code))
+    if parser.valid:
+        print("valid")
+    else:
+        print("invalid")
