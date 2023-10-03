@@ -1,8 +1,9 @@
 from sly import Parser
 from Lexer import CLexer
-tokens=CLexer.tokens()
-literals=CLexer.literals()
+
 class CParser(Parser):
+    tokens=CLexer.tokens()
+    literals=CLexer.literals()
     @_('main_func')
     def program(self,p):
         return true
