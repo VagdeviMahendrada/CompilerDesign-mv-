@@ -12,12 +12,12 @@ class CLexer(Lexer):
     def newline(self,t):
         r'\n+'
         self.lineno+=len(t.value)
-lexer=CLexer()
-code='''int main(){
-    int a;
-    a=30;
-    print a;
-}'''
-tokens=lexer.tokenize(code)
-for toks in tokens:
-    print(f"type={toks.type},value={toks.value}")
+# lexer=CLexer()
+# code='''int main(){
+#     int a;
+#     a=30;
+#     print a;
+# }'''
+# tokens=lexer.tokenize(code)
+# for toks in tokens:
+#     print(f"type={toks.type},value={toks.value}")
