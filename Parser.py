@@ -12,7 +12,7 @@ class CParser(Parser):
         pass
     @_('INT')
     def return_type(self,p):
-        return 'int'
+        return p.INT
     @_('statement ";" statements')
     def statements(self,p):
         pass
@@ -28,7 +28,7 @@ class CParser(Parser):
     @_('print_stmt')
     def statement(self,p):
         pass
-    @_('type list_of_variables ";"')
+    @_('type list_of_variables')
     def declaration_stmt(self,p):
         pass
     @_('identifier "," list_of_variables')
@@ -37,13 +37,13 @@ class CParser(Parser):
     @_('identifier')
     def list_of_variables(self,p):
         pass
-    @_('identifier "=" identifier ";"')
+    @_('identifier "=" identifier')
     def assignment_stmt(self,p):
         pass
-    @_('identifier "=" NUMBER ";" ')
+    @_('identifier "=" NUMBER')
     def assignment_stmt(self,p):
         pass
-    @_('PRINT identifier ";" ')
+    @_('PRINT identifier')
     def print_stmt(self,p):
         pass
     @_('INT')
@@ -59,9 +59,13 @@ if __name__=='__main__':
     lexer=CLexer()
     parser=CParser()
     code='''int main(){
-        int a;
+        int a,b;
         a=30;
+        b=a;
+        c=20;
         print a;
+        print b;
+        print c;
     }'''
     res=parser.parse(lexer.tokenize(code))
     if res:
