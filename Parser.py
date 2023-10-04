@@ -6,13 +6,13 @@ class CParser(Parser):
     literals=CLexer.literals
     @_('main_func')
     def program(self,p):
-        return true
+        return True
     @_('return_type identifier "(" ")" "{" statements "}"')
     def main_func(self,p):
         pass
     @_('INT')
     def return_type(self,p):
-        return p.int
+        return 'int'
     @_('statement ";" statements')
     def statements(self,p):
         pass
@@ -28,7 +28,7 @@ class CParser(Parser):
     @_('print_stmt')
     def statement(self,p):
         pass
-    @_('type list_of_variables')
+    @_('type list_of_variables ";"')
     def declaration_stmt(self,p):
         pass
     @_('identifier "," list_of_variables')
@@ -48,7 +48,7 @@ class CParser(Parser):
         pass
     @_('INT')
     def type(self,p):
-        return int
+        return 'int'
     @_('ID')
     def identifier(self,p):
         return p[0]
