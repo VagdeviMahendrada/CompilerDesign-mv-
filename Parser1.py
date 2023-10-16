@@ -45,19 +45,20 @@ class CParser(Parser):
         return p[0]
     @_('identifier "=" identifier')
     def assignment_stmt(self,p):
-        la=NameAst(gst.nameInSymbolTable(identifier))
-        ra=NameAst(gst.nameInSymbolTable(identifier))
+        la=NameAst(gst.nameInSymbolTable(p.identifier))
+        ra=NameAst(gst.nameInSymbolTable(p.identifier))
         aa=AssignAst(la,ra)
         return aa
     @_('identifier "=" constant')
     def assignment_stmt(self,p):
-        la=NameAst(gst.nameInSymbolTable(identifier))
-        ra=NumberAst(constant)
+        la=NameAst(gst.nameInSymbolTable(p.identifier))
+        ra=NumberAst(p.constant)
         aa=AssignAst(la,ra)
         return aa
     @_('PRINT identifier')
     def print_stmt(self,p):
-        pass
+        pa=PrintAst(gst.nameInSymbolTable(p.identifier))
+        return pa
     @_('INT')
     def type(self,p):
         return p[0]
