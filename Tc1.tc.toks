@@ -1,0 +1,16 @@
+type= INT , value= int 
+type= ID , value= main 
+type= ( , value= ( 
+type= ) , value= ) 
+type= { , value= { 
+type= INT , value= int 
+type= ID , value= a 
+type= ; , value= ; 
+type= ID , value= a 
+type= = , value= = 
+type= NUMBER , value= 30 
+type= ; , value= ; 
+type= PRINT , value= print 
+type= ID , value= a 
+type= ; , value= ; 
+type= } , value= } 
