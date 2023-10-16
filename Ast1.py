@@ -28,7 +28,7 @@ class NameAst(AST):
 		self.symbolEntry = symbolEntry
 	def print(self):
 		print("Name:",end="")
-		symbolEntry.print()
+		self.symbolEntry.print()
 	def getDataType(self):
 		return symbolEntry.getDataType()
 

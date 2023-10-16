@@ -23,6 +23,6 @@ class SymbolTable:
 			if i.getSymbolName()==name:
 				return i
 		return None
-	def printSymbolTable(self):
+	def print(self):
 		pass
 

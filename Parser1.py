@@ -16,6 +16,7 @@ class CParser(Parser):
         pr=Program()
         f=Function(p.return_type,p.identifier)
         f.setStatementsAstList(p.statements)
+        print(p.statements)
         f.setLocalSymbolTable(gst)
         pr.addFunctionDetails(p.identifier,f)
         return pr
@@ -44,6 +45,7 @@ class CParser(Parser):
         for i in p[1]:
             se=SymbolTableEntry(i,p[0])
             gst.addSymbol(se)
+        return gst
     @_('identifier "," list_of_variables')
     def list_of_variables(self,p):
         return [p[0]]+p[2]
