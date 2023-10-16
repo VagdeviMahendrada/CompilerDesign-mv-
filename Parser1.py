@@ -2,6 +2,8 @@ from sly import Parser
 from Lexer1 import CLexer
 from SymbolTable1 import SymbolTableEntry,SymbolTable
 from Ast1 import NameAst,NumberAst,AssignAst,PrintAst
+from Program1 import Program
+from Function1 import Function
 gst=SymbolTable()
 class CParser(Parser):
     tokens=CLexer.tokens

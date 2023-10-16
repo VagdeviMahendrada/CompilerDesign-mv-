@@ -20,7 +20,7 @@ class SymbolTable:
 		self.table.append(symbol)
 	def nameInSymbolTable(self,name):
 		for i in self.table:
-			if i.getSymbolName()==self.name:
+			if i.getSymbolName()==name:
 				return i
 		return None
 	def printSymbolTable(self):
