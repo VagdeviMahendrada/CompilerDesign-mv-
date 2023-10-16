@@ -15,8 +15,8 @@ class Function:
 		return self.localSymbolTable
 	def print(self):
 		print("	Procedure:",end="")
-		print(self.name)
-		print("ReturnType",end="")
+		print(self.name,end="")
+		print(", ReturnType:",end="")
 		print(self.returnType)
 		for i in self.statementsAstList:
 			i.print()

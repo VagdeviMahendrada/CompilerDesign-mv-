@@ -14,7 +14,7 @@ class CParser(Parser):
     @_('return_type identifier "(" ")" "{" statements "}" ')
     def program(self,p):
         pr=Program()
-        f=Function()
+        f=Function(p.return_type,p.identifier)
         f.setStatementsAstList(p.statements)
         f.setLocalSymbolTable(gst)
         pr.addFunctionDetails(p.identifier,f)
