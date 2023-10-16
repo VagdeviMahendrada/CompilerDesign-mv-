@@ -14,7 +14,10 @@ class CParser(Parser):
     @_('return_type identifier "(" ")" "{" statements "}" ')
     def program(self,p):
         pr=Program()
-        pr.addFunctionDetails(p.identifier,p.statements)
+        f=Function()
+        f.setStatementsAstList(p.statements)
+        f.setLocalSymbolTable(gst)
+        pr.addFunctionDetails(p.identifier,f)
         return pr
     @_('INT')
     def return_type(self,p):
@@ -85,5 +88,6 @@ print b;
 res=(parser.parse(lexer.tokenize(code)))
 if res:
     print("valid code")
+    res.print()
 else:
     print("invalid code")

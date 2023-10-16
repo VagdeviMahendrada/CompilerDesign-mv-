@@ -7,6 +7,7 @@ class Program:
 
 	def print(self):
 		for funname, function in self.functions.items():
+			print("Program:")
 			function.print()
 	
 
