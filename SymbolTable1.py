@@ -4,7 +4,7 @@ DataType = Enum('DataType',['INT','DOUBLE'])
 class SymbolTableEntry:
 	def __init__(self,name,datatype):
 		self.name=name
-        self.datatype=datatype
+		self.datatype=datatype
 	def getSymbolName(self):
 		return self.name
 	def getDataType(self):
@@ -20,9 +20,9 @@ class SymbolTable:
 		self.table.append(symbol)
 	def nameInSymbolTable(self,name):
 		for i in self.table:
-            if i.getSymbolName()==self.name:
-                return i
-        return None
+			if i.getSymbolName()==self.name:
+				return i
+		return None
 	def printSymbolTable(self):
 		pass
 

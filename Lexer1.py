@@ -2,6 +2,7 @@ from sly import Lexer
 class CLexer(Lexer):
     tokens={INT,NUMBER,ID,PRINT}
     literals={';',',','=','(',')','{','}'}
+    ignore=' \t\n'
     INT=r'int'
     PRINT=r'print'
     NUMBER=r'\d+'

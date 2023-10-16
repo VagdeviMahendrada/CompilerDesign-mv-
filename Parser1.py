@@ -2,7 +2,7 @@ from sly import Parser
 from Lexer1 import CLexer
 from SymbolTable1 import SymbolTableEntry,SymbolTable
 from Ast1 import NameAst,NumberAst,AssignAst,PrintAst
-gst=SymbolTable1()
+gst=SymbolTable()
 class CParser(Parser):
     tokens=CLexer.tokens
     literals=CLexer.literals
@@ -70,3 +70,15 @@ class CParser(Parser):
     @_('NUMBER')
     def constant(self,p):
         return p[0]
+lexer=CLexer()
+parser=CParser()
+code='''int main(){
+int a;
+a=30;
+print a;
+}'''
+res=(parser.parse(lexer.tokenize(code)))
+if res:
+    print("valid code")
+else:
+    print("invalid code")

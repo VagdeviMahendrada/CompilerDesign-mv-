@@ -1,5 +1,5 @@
 from enum import Enum
-from abc import ABC
+from abc import ABC,ABCMeta,abstractmethod
 from SymbolTable import SymbolTable
 from SymbolTable import SymbolTableEntry
 
@@ -43,7 +43,7 @@ class AssignAst(AST):
 	def print(self):
 		pass
 
-class PrintAst(Ast):
+class PrintAst(AST):
 	def __init__(self,symbolEntry):
 		self.symbolEntry= symbolEntry
 	def print(self):
