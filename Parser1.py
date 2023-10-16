@@ -49,8 +49,8 @@ class CParser(Parser):
         return [p[0]]
     @_('identifier "=" identifier')
     def assignment_stmt(self,p):
-        la=NameAst(gst.nameInSymbolTable(p.identifier))
-        ra=NameAst(gst.nameInSymbolTable(p.identifier))
+        la=NameAst(gst.nameInSymbolTable(p[0]))
+        ra=NameAst(gst.nameInSymbolTable(p[2]))
         aa=AssignAst(la,ra)
         return aa
     @_('identifier "=" constant')
@@ -75,9 +75,12 @@ class CParser(Parser):
 lexer=CLexer()
 parser=CParser()
 code='''int main(){
-int a;
+int a,b,c;
 a=30;
+b=a;
+c=b;
 print a;
+print b;
 }'''
 res=(parser.parse(lexer.tokenize(code)))
 if res:
