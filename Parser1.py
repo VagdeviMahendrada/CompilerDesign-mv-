@@ -1,6 +1,4 @@
 from sly import Parser
-# import CLexer from Lexer1
-# import SymbolTableEntry,SymbolTable from SymbolTable1
 from Lexer1 import CLexer
 from SymbolTable1 import SymbolTableEntry,SymbolTable
 from Ast1 import NameAst,NumberAst,AssignAst,PrintAst
@@ -21,7 +19,7 @@ class CParser(Parser):
         return p[0]
     @_('statement ";" statements')
     def statements(self,p):
-        return p[0]+p[2]
+        return [p[0]]+p[2]
     @_('statement ";"')
     def statements(self,p):
         return [p[0]]
@@ -36,13 +34,17 @@ class CParser(Parser):
         return p[0]
     @_('type list_of_variables')
     def declaration_stmt(self,p):
-        pass
+        # se=SymbolTableEntry(,p[0])
+        # gst.addSymbol()
+        for i in p[1]:
+            se=SymbolTableEntry(i,p[0])
+            gst.addSymbol(se)
     @_('identifier "," list_of_variables')
     def list_of_variables(self,p):
-        pass
+        return [p[0]]+p[2]
     @_('identifier')
     def list_of_variables(self,p):
-        return p[0]
+        return [p[0]]
     @_('identifier "=" identifier')
     def assignment_stmt(self,p):
         la=NameAst(gst.nameInSymbolTable(p.identifier))
