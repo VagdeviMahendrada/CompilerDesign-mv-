@@ -10,7 +10,7 @@ class SymbolTableEntry:
 	def getDataType(self):
 		return self.datatype
 	def print(self):
-		print(self.name)
+		print(self.name,end="")
 
 
 class SymbolTable:

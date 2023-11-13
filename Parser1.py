@@ -4,6 +4,7 @@ from SymbolTable1 import SymbolTableEntry,SymbolTable
 from Ast1 import NameAst,NumberAst,AssignAst,PrintAst
 from Program1 import Program
 from Function1 import Function
+import main2
 gst=SymbolTable()
 class CParser(Parser):
     tokens=CLexer.tokens
@@ -16,7 +17,7 @@ class CParser(Parser):
         pr=Program()
         f=Function(p.return_type,p.identifier)
         f.setStatementsAstList(p.statements)
-        print(p.statements)
+        # print(p.statements)
         f.setLocalSymbolTable(gst)
         pr.addFunctionDetails(p.identifier,f)
         return pr
@@ -77,19 +78,19 @@ class CParser(Parser):
     @_('NUMBER')
     def constant(self,p):
         return p[0]
-lexer=CLexer()
-parser=CParser()
-code='''int main(){
-int a,b,c;
-a=30;
-b=a;
-c=b;
-print a;
-print b;
-}'''
-res=(parser.parse(lexer.tokenize(code)))
-if res:
-    print("valid code")
-    res.print()
-else:
-    print("invalid code")
+# lexer=CLexer()
+# parser=CParser()
+# code='''int main(){
+# int a,b,c;
+# a=30;
+# b=a;
+# c=b;
+# print a;
+# print b;
+# }'''
+# res=(parser.parse(lexer.tokenize(code)))
+# if res:
+#     print("valid code")
+#     res.print()
+# else:
+#     print("invalid code")

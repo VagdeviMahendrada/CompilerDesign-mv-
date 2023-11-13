@@ -8,9 +8,8 @@ type = ID , value=a
 type = ; , value=; 
 type = ID , value=a 
 type = = , value== 
-type = NUMBER , value=30 
+type = NUMBER , value=10 
 type = ; , value=; 
 type = PRINT , value=print 
 type = ID , value=a 
-type = ; , value=; 
 type = } , value=} 

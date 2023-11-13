@@ -1,6 +1,6 @@
 import argparse
-from Parser1 import CParser
 from Lexer1 import CLexer
+from Parser1 import CParser
 parser = argparse.ArgumentParser()
 
 parser.usage = "tinyCC [options] file"
@@ -13,19 +13,26 @@ parser.add_argument('-compile',action='store_true',help="Compile the program and
 parser.add_argument('file',help="TinyC Program")
 args = parser.parse_args()
 lexer=CLexer()
+parser=CParser()
 f=open(args.file)
 code=f.read()
 tokens=lexer.tokenize(code)
-
 args.compile = True  #default value
 if args.tokens:
 	tokens_file_name = args.file +".toks"
 	tokens_file = open(tokens_file_name,"w")
+	for i in tokens:
+		tokens_file.write(f"type = {i.type} , value={i.value} \n")
     # call tokenize and print tokens into tokens_file
 if args.parse:
 	# call parser, which should not create Program data structure
 	args.ast = False
 	args.compile = False
+	res=parser.parse(tokens)
+	if res:
+		print("the code is valid")
+	else:
+		print("invalid code")
 if args.ast:
 	ast_file_name = args.file +".ast"
 	ast_file = open(ast_file_name,"w")
@@ -36,4 +43,3 @@ if args.compile:
 	target_code_file = open(target_code_file_name,"w")
     # call parser, creates Program object
     # call program.compile(), which should 
-
